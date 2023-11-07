@@ -1,5 +1,9 @@
-import model from '../model/DAO/modelMongo.js'
+import Model from '../model/DAO/modelMongo.js'
 
-class servicio{}
+class Servicio {
+    constructor() {
+        this.model = new Model()
+    }
+}
 
-export default servicio
+export default Servicio

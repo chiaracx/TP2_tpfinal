@@ -1,17 +1,16 @@
-import controlador from '../controlador/controlador.js'
+import Controlador from '../controlador/controlador.js'
 
-class router{
-
+class Router {
     constructor() {
-        this.controlador = new controlador()
+        this.controlador = new Controlador()
         this.router = express.Router()
     }
 
     start() {
-        this.router.get('/:id?', this.controlador.mostrarPaciente )
-        this.router.get('/promedioEdad', this.controlador.calcularPromedioEdad )
-        this.router.get('/cantidadPacientes', this.controlador.devolverCantidad )
-        
+        this.router.get('/:id?', this.controlador.mostrarPaciente)
+        this.router.get('/promedioEdad', this.controlador.calcularPromedioEdad)
+        this.router.get('/cantidadPacientes', this.controlador.devolverCantidad)
+
         this.router.post('/altaPaciente', this.controlador.agregarPaciente)
         this.router.post('/especialidad', this.controlador.agregarEspecialidad)
 
@@ -25,4 +24,4 @@ class router{
 
 }
 
-export default router
+export default Router

@@ -1,5 +1,5 @@
-class model{
+class Model {
 
 }
 
-export default model
+export default Model

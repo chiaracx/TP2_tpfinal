@@ -1,81 +1,81 @@
-import service from '../servicio/servicio.js'
+import Service from '../servicio/servicio.js'
 
-class controlador{
+class Controlador {
 
-    constructor (){
+    constructor() {
         this.service = new servicio()
     }
 
-    async mostrarPaciente (req,res){
-        try{
+    async mostrarPaciente(req, res) {
+        try {
             const pacientes = await this.servicio.mostrarPaciente()
             res.send(pacientes)
         }
-        catch(error){
+        catch (error) {
             console.log('error mostrando paciente - controlador' + error);
         }
     }
-    async calcularPromedioEdad (req,res){
-        try{
+    async calcularPromedioEdad(req, res) {
+        try {
             const promedioEdad = await this.servicio.calcularPromedioEdad()
             res.send(promedioEdad)
         }
-        catch(error){
+        catch (error) {
             console.log('error mostrando promedio - controlador' + error);
         }
     }
-    async devolverCantidad (req,res){
-        try{
+    async devolverCantidad(req, res) {
+        try {
             const cantidad = await this.servicio.cantidadPacientes()
             res.send(pacientes)
         }
-        catch(error){
+        catch (error) {
             console.log('error mostrando cantidad de pacientes - controlador' + error);
         }
     }
-    async agregarEspecialidad (req,res){
-        try{
+    async agregarEspecialidad(req, res) {
+        try {
             let especialidad = req.body
             let especialidadGuardada = await this.servicio.agregarEspecialidad(especialidad)
             res.json(especialidadGuardada)
         }
-        catch(error){
+        catch (error) {
             console.log('error guardando especialidad - controlador' + error);
         }
     }
-    async agregarPaciente (req,res){
-        try{
+    async agregarPaciente(req, res) {
+        try {
             let paciente = req.body
             let pacienteGuardado = await this.servicio.agregarPaciente(paciente)
             res.json(pacienteGuardado)
         }
-        catch(error){
+        catch (error) {
             console.log('error agregando paciente - controlador' + error);
         }
     }
-    async actualizarPaciente (req,res){
-        try{
+    async actualizarPaciente(req, res) {
+        try {
 
             let paciente = req.body
             let pacienteGuardado = await this.servicio.agregarPaciente(paciente)
             res.json(pacienteGuardado)
         }
-        catch(error){
+        catch (error) {
             console.log('error actualizando paciente - controlador' + error);
         }
     }
-    async eliminarPaciente (req,res){
-        try{
+    async eliminarPaciente(req, res) {
+        try {
             let paciente = req.body
             let pacienteEliminado = await this.servicio.eliminarPaciente(paciente)
             res.json(pacienteEliminado)
         }
-        catch(error){
+        catch (error) {
             console.log('error eliminando paciente - controlador' + error);
         }
     }
-    
+
 
 }
 
-export default controlador
+export default Controlador
