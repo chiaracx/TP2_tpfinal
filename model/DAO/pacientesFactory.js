@@ -1,4 +1,5 @@
 import ModelPacientesMongoDB from "./pacientesModelMongo.js"
+import ModelPacienteFile from "./pacientesModeloFile.js"
 
 class ModelFactory {
     static get(tipo) {
@@ -9,8 +10,8 @@ class ModelFactory {
                 return new ModelPacientesMongoDB()
                 
             default:
-                console.log('**** Persistiendo en Memoria (default) ****')
-                return new ModelPacientesMongoDB()
+                console.log('**** Persistiendo en File System (default) ****')
+                return new ModelPacienteFile()
         }
     }
 }

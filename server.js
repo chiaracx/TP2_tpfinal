@@ -3,9 +3,10 @@ import RouterNotas from './router/pacienteRouter.js'
 import config from './config.js'
 
 const app = express()
-
-app.use(express.static('public'))
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(express.static('public'))
+
 
 const router = new RouterNotas()
 

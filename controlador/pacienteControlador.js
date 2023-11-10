@@ -5,25 +5,34 @@ class Controlador {
         this.servicio = new Servicio()
     }
 
-    async mostrarPaciente(req, res) {
-        try {
-            const pacientes = await this.servicio.mostrarPaciente(id)
-            res.send(pacientes)
-        }
-        catch (error) {
-            console.log('error mostrando paciente - controlador' + error);
-        }
+    mostrarPaciente = async (req, res) => {
+        const { id } = req.params
+        const pacientes = await this.servicio.mostrarPaciente(id)
+        res.json(pacientes)
+
+        // try {
+        //     const pacientes = await this.servicio.mostrarPaciente(id)
+        //     res.send(pacientes)
+        // }
+        // catch (error) {
+        //     console.log('error mostrando paciente - controlador' + error);
+        // }
     }
-    async calcularPromedioEdad(req, res) {
-        try {
-            const promedioEdad = await this.servicio.calcularPromedioEdad()
-            res.send(promedioEdad)
-        }
-        catch (error) {
-            console.log('error mostrando promedio - controlador' + error);
-        }
+
+    calcularPromedioEdad = async (req, res) => {
+
+        const promedioEdad = await this.servicio.calcularPromedioEdad()
+        res.json({promedioEdad})
+
+        // try {
+        //     const promedioEdad = await this.servicio.calcularPromedioEdad()
+        //     res.send(promedioEdad)
+        // }
+        // catch (error) {
+        //     console.log('error mostrando promedio - controlador' + error);
+        // }
     }
-    async devolverCantidad(req, res) {
+    devolverCantidad = async (req, res) => {
         try {
             const cantidad = await this.servicio.cantidadPacientes()
             res.send(pacientes)
@@ -44,17 +53,22 @@ class Controlador {
     //     }
     // }
 
-    async agregarPaciente(req, res) {
-        try {
-            let paciente = req.body
-            let pacienteGuardado = await this.servicio.agregarPaciente(paciente)
-            res.json(pacienteGuardado)
-        }
-        catch (error) {
-            console.log('error agregando paciente - controlador' + error);
-        }
+    agregarPaciente = async (req, res) => {
+
+        const paciente = req.body
+        const pacienteGuardado = await this.servicio.agregarPaciente(paciente)
+        res.json(pacienteGuardado)
+
+        // try {
+        //     let paciente = req.body
+        //     let pacienteGuardado = await this.servicio.agregarPaciente(paciente)
+        //     res.json(pacienteGuardado)
+        // }
+        // catch (error) {
+        //     console.log('error agregando paciente - controlador' + error);
+        // }
     }
-    async actualizarPaciente(req, res) {
+    actualizarPaciente = async (req, res) => {
         try {
             const { id } = req.params
             let paciente = req.body
@@ -65,7 +79,7 @@ class Controlador {
             console.log('error actualizando paciente - controlador' + error);
         }
     }
-    async eliminarPaciente(req, res) {
+    eliminarPaciente = async (req, res) => {
         try {
             let paciente = req.body
             let pacienteEliminado = await this.servicio.eliminarPaciente(paciente)
