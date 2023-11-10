@@ -1,4 +1,4 @@
-import Service from '../servicio/servicio.js'
+import Service from '../servicio/pacienteServicio.js'
 
 class Controlador {
 
@@ -8,7 +8,7 @@ class Controlador {
 
     async mostrarPaciente(req, res) {
         try {
-            const pacientes = await this.servicio.mostrarPaciente()
+            const pacientes = await this.servicio.mostrarPaciente(id)
             res.send(pacientes)
         }
         catch (error) {
@@ -33,16 +33,18 @@ class Controlador {
             console.log('error mostrando cantidad de pacientes - controlador' + error);
         }
     }
-    async agregarEspecialidad(req, res) {
-        try {
-            let especialidad = req.body
-            let especialidadGuardada = await this.servicio.agregarEspecialidad(especialidad)
-            res.json(especialidadGuardada)
-        }
-        catch (error) {
-            console.log('error guardando especialidad - controlador' + error);
-        }
-    }
+    
+    // async agregarEspecialidad(req, res) {
+    //     try {
+    //         let especialidad = req.body
+    //         let especialidadGuardada = await this.servicio.agregarEspecialidad(especialidad)
+    //         res.json(especialidadGuardada)
+    //     }
+    //     catch (error) {
+    //         console.log('error guardando especialidad - controlador' + error);
+    //     }
+    // }
+
     async agregarPaciente(req, res) {
         try {
             let paciente = req.body

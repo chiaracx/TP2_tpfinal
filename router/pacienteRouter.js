@@ -1,4 +1,5 @@
-import Controlador from '../controlador/controlador.js'
+import Controlador from '../controlador/pacienteControlador.js'
+import express from 'express'
 
 class Router {
     constructor() {
