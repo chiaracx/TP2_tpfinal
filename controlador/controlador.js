@@ -3,7 +3,7 @@ import Service from '../servicio/servicio.js'
 class Controlador {
 
     constructor() {
-        this.service = new servicio()
+        this.service = new Service()
     }
 
     async mostrarPaciente(req, res) {
@@ -55,9 +55,9 @@ class Controlador {
     }
     async actualizarPaciente(req, res) {
         try {
-
+            const { id } = req.params
             let paciente = req.body
-            let pacienteGuardado = await this.servicio.agregarPaciente(paciente)
+            let pacienteGuardado = await this.servicio.actualizarPaciente(id, paciente)
             res.json(pacienteGuardado)
         }
         catch (error) {
