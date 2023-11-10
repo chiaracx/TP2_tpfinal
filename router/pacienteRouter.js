@@ -1,5 +1,5 @@
-import Controlador from '../controlador/pacienteControlador.js'
 import express from 'express'
+import Controlador from '../controlador/pacienteControlador.js'
 
 class Router {
     constructor() {
@@ -13,16 +13,14 @@ class Router {
         this.router.get('/cantidadPacientes', this.controlador.devolverCantidad)
 
         this.router.post('/altaPaciente', this.controlador.agregarPaciente)
-        this.router.post('/especialidad', this.controlador.agregarEspecialidad)
+        //this.router.post('/especialidad', this.controlador.agregarEspecialidad)
 
         this.router.put('/:id?', this.controlador.actualizarPaciente)
 
         this.router.delete('/bajaPaciente/:id?', this.controlador.eliminarPaciente)
 
-
         return this.router
     }
-
 }
 
 export default Router

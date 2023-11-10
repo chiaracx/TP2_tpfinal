@@ -1,8 +1,10 @@
-import Model from '../model/DAO/modelMongo.js'
+import config from '../config.js'
+import ModelFactory from '../model/DAO/pacientesFactory.js'
+// import Model from '../model/DAO/pacientesModelMongo.js'
 
 class Servicio {
     constructor() {
-        this.model = new Model()
+        this.model = ModelFactory.get(config.MODO_PERSISTENCIA)
     }
 
     mostrarPaciente = async id => {
@@ -15,7 +17,7 @@ class Servicio {
     }
 
     devolverCantidad = async () => {
-        const cantidad = await this.model.devolverCantidad()
+        const cantidad = await this.model.mostrarPaciente()
         return cantidad.length
     }
 

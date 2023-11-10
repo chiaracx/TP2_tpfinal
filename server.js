@@ -17,7 +17,11 @@ app.use('/api/clinica', router.start())
 /* ------------------------------------------------------------- */
 /*                      Servidor LISTEN                          */
 /* ------------------------------------------------------------- */
-const PORT = config.PORT
 
+if (config.MODO_PERSISTENCIA == 'MONGODB') {
+    await CnxMongoDB.conectar()
+}
+
+const PORT = config.PORT
 const server = app.listen(PORT, () => console.log(`Servidor express escuchando en http://localhost:${PORT}`))
 server.on('error', error => console.log('Servidor express en error:', error))

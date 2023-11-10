@@ -1,9 +1,8 @@
-import Service from '../servicio/pacienteServicio.js'
+import Servicio from '../servicio/pacienteServicio.js'
 
 class Controlador {
-
     constructor() {
-        this.service = new Service()
+        this.servicio = new Servicio()
     }
 
     async mostrarPaciente(req, res) {
@@ -33,7 +32,7 @@ class Controlador {
             console.log('error mostrando cantidad de pacientes - controlador' + error);
         }
     }
-    
+
     // async agregarEspecialidad(req, res) {
     //     try {
     //         let especialidad = req.body
