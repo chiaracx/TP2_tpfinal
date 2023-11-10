@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "tp-clinica",
   "version": "1.0.0",
   "description": "TP final - servidor para clinica",
