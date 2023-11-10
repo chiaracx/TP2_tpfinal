@@ -11,14 +11,11 @@ class Router {
         this.router.get('/pacientes/:id?', this.controlador.mostrarPaciente)
         this.router.get('/promedioEdad', this.controlador.calcularPromedioEdad)
         this.router.get('/cantidadPacientes', this.controlador.devolverCantidad)
-
         this.router.post('/', this.controlador.agregarPaciente)
+        this.router.put('/:id', this.controlador.actualizarPaciente)
+        this.router.delete('/:id', this.controlador.eliminarPaciente)
+
         //this.router.post('/especialidad', this.controlador.agregarEspecialidad)
-
-        this.router.put('/:id?', this.controlador.actualizarPaciente)
-
-        this.router.delete('/bajaPaciente/:id?', this.controlador.eliminarPaciente)
-
         return this.router
     }
 }

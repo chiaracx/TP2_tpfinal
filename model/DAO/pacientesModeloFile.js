@@ -55,7 +55,6 @@ class ModelPacienteFile {
             const pacienteNuevo = { ...pacienteAnt, ...paciente }
             pacientes.splice(index, 1, pacienteNuevo)
             await this.escribirArchivo(this.nombreArchivo, pacientes)
-
             return pacienteNuevo
         }
         else {
@@ -66,10 +65,9 @@ class ModelPacienteFile {
     }
 
     eliminarPaciente = async id => {
-        let paciente = {}
-
-        const pacientes = await this.leerArchivo(this.nombreArchivo)
-        const index = pacientes.findIndex(paciente => paciente.id === id)
+        let paciente = {}    
+        const pacientes = await this.leerArchivo(this.nombreArchivo)   
+        const index = pacientes.findIndex(paciente => paciente.id === id)   
         if (index != -1) {
             paciente = pacientes.splice(index, 1)[0]
             await this.escribirArchivo(this.nombreArchivo, pacientes)
