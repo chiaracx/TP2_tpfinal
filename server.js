@@ -8,15 +8,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
-
 const routerPaciente = new RouterPaciente()
 const routerProfesional = new RouterProfesional()
 
 /* ------------------------------------------------------------- */
 /*             ZONA DE RUTAS MANEJADAS POR EL ROUTER             */
 /* ------------------------------------------------------------- */
-app.use('/api/clinica', routerPaciente.start())
-app.use('/api/clinica', routerProfesional.start())
+app.use('/api/clinica/paciente', routerPaciente.start())
+app.use('/api/clinica/profesional', routerProfesional.start())
 
 /* ------------------------------------------------------------- */
 /*                      Servidor LISTEN                          */

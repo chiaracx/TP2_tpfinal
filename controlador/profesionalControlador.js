@@ -17,6 +17,12 @@ class ControladorProfesional {
         res.json({ cantidad })
     }
 
+    mostrarEspecialidad = async (req, res) => {
+        const { id } = req.params
+        const especialidad = await this.servicioProf.mostrarEspecialidad(id)
+        res.json({ especialidad })
+    }
+
     agregarProfesional = async (req, res) => {
         const profesional = req.body
         const profesionalGuardado = await this.servicioProf.agregarProfesional(profesional)

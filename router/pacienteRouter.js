@@ -15,7 +15,6 @@ class RouterPaciente {
         this.router.put('/:id', this.controlador.actualizarPaciente)
         this.router.delete('/:id', this.controlador.eliminarPaciente)
 
-        //this.router.post('/especialidad', this.controlador.agregarEspecialidad)
         return this.router
     }
 }

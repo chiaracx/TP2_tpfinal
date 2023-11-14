@@ -4,7 +4,7 @@ class ModeloProfesionalFile {
     constructor() {
         this.nombreArchivo = 'profesionales.json'
     }
-    
+
     leerArchivo = async nombre => {
         let profesionales = []
         try {
@@ -37,12 +37,32 @@ class ModeloProfesionalFile {
     agregarProfesional = async profesional => {
         const profesionales = await this.leerArchivo(this.nombreArchivo)
 
-        profesional.id = String(parseInt(profesionales[profesionales.length - 1]?.id || 0) + 1) // ?. optional chaining
+        profesional.id = String(parseInt(profesionales[profesionales.length - 1]?.id || 0) + 1)
+        profesional.especialidad = String(profesional.especialidad)
         profesionales.push(profesional)
         await this.escribirArchivo(this.nombreArchivo, profesionales)
 
         return profesional
     }
+
+    // mostrarEspecialidad= async id => {
+    //     try {
+    //         const profesionales = await this.leerArchivo(this.nombreArchivo)
+    //         if (id) {
+    //             const profesional = profesionales.find(profesional => profesional.id === id)
+    //             return profesional || {}
+    //         }
+    //         else {
+    //             return profesionales
+    //         }
+    //     }
+    //     catch {
+    //         return id ? {} : []
+    //     }
+    // }
+
+
+
 
     actualizarProfesional = async (id, profesional) => {
         profesional.id = id

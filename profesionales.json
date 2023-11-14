@@ -1,6 +1,12 @@
 [
 	{
 		"nombre": "Dr. Perez",
+		"especialidad": "Cardiologia",
 		"id": "1"
+	},
+	{
+		"nombre": "Dr. Gomez",
+		"especialidad": "Odontologia",
+		"id": "2"
 	}
 ]

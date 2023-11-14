@@ -37,7 +37,7 @@ class ModelPacienteFile {
     agregarPaciente = async paciente => {
         const pacientes = await this.leerArchivo(this.nombreArchivo)
 
-        paciente.id = String(parseInt(pacientes[pacientes.length - 1]?.id || 0) + 1) // ?. optional chaining
+        paciente.id = String(parseInt(pacientes[pacientes.length - 1]?.id || 0) + 1)
         paciente.edad = Number(paciente.edad)
         pacientes.push(paciente)
         await this.escribirArchivo(this.nombreArchivo, pacientes)

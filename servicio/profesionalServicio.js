@@ -16,6 +16,13 @@ class ServicioProfesional {
         return cantidad.length
     }
 
+    mostrarEspecialidad = async id => {
+        const profesional = await this.model.mostrarProfesional(id)
+        const especialidad = profesional.especialidad
+        return especialidad
+    }
+
+
     agregarProfesional = async profesional => {
         const profesionalAgregado = await this.model.agregarProfesional(profesional)
         return profesionalAgregado

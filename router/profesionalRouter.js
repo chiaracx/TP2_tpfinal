@@ -10,6 +10,7 @@ class RouterProfesional {
     start() {
         this.router.get('/profesionales/:id?', this.controladorProf.mostrarProfesional)
         this.router.get('/cantidadProfesionales', this.controladorProf.cantidadProfesional)
+        this.router.get('/especialidad/:id', this.controladorProf.mostrarEspecialidad)
         this.router.post('/', this.controladorProf.agregarProfesional)
         this.router.put('/:id', this.controladorProf.actualizarProfesional)
         this.router.delete('/:id', this.controladorProf.eliminarProfesional)
