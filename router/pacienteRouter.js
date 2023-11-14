@@ -1,7 +1,7 @@
 import express from 'express'
 import Controlador from '../controlador/pacienteControlador.js'
 
-class Router {
+class RouterPaciente {
     constructor() {
         this.controlador = new Controlador()
         this.router = express.Router()
@@ -20,4 +20,4 @@ class Router {
     }
 }
 
-export default Router
+export default RouterPaciente

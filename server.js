@@ -1,19 +1,22 @@
 import express from 'express'
-import RouterNotas from './router/pacienteRouter.js'
+import RouterPaciente from './router/pacienteRouter.js'
 import config from './config.js'
+import RouterProfesional from './router/profesionalRouter.js'
 
 const app = express()
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 
-const router = new RouterNotas()
+const routerPaciente = new RouterPaciente()
+const routerProfesional = new RouterProfesional()
 
 /* ------------------------------------------------------------- */
 /*             ZONA DE RUTAS MANEJADAS POR EL ROUTER             */
 /* ------------------------------------------------------------- */
-app.use('/api/clinica', router.start())
+app.use('/api/clinica', routerPaciente.start())
+app.use('/api/clinica', routerProfesional.start())
 
 /* ------------------------------------------------------------- */
 /*                      Servidor LISTEN                          */

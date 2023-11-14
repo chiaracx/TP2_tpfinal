@@ -1,6 +1,6 @@
 import Servicio from '../servicio/pacienteServicio.js'
 
-class Controlador {
+class ControladorPaciente {
     constructor() {
         this.servicio = new Servicio()
     }
@@ -106,4 +106,4 @@ class Controlador {
 
 }
 
-export default Controlador
+export default ControladorPaciente
