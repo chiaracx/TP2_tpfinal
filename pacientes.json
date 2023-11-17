@@ -17,5 +17,9 @@
 	{
 		"nombre": "Dr. Simpson",
 		"id": "agregarProfesional"
+	},
+	{
+		"precio": "900",
+		"id": "pacientes"
 	}
 ]
