@@ -1,7 +1,6 @@
 import { ObjectId } from "mongodb"
 import CnxMongoDB from "../DBMongo.js"
 
-
 class ModelPacientesMongoDB {
     mostrarPaciente = async id => {
         if (!CnxMongoDB.connection) return id ? {} : []
@@ -31,14 +30,14 @@ class ModelPacientesMongoDB {
             { $set: paciente }
         )
 
-        const pacientesActualizado = await this.obtenerpacientes(id)
+        const pacientesActualizado = await this.mostrarPaciente(id)
         return pacientesActualizado
     }
 
     eliminarPaciente = async id => {
         if (!CnxMongoDB.connection) return {}
 
-        const pacientesBorrado = await this.obtenerpacientes(id)
+        const pacientesBorrado = await this.mostrarPaciente(id)
         await CnxMongoDB.db.collection('pacientes').deleteOne({ _id: new ObjectId(id) })
         return pacientesBorrado
     }

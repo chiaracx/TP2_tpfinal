@@ -22,7 +22,6 @@ class ServicioProfesional {
         return especialidad
     }
 
-
     agregarProfesional = async profesional => {
         const profesionalAgregado = await this.model.agregarProfesional(profesional)
         return profesionalAgregado
