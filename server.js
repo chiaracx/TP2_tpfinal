@@ -3,6 +3,8 @@ import RouterPaciente from './router/pacienteRouter.js'
 import config from './config.js'
 import RouterProfesional from './router/profesionalRouter.js'
 
+import CnxMongoDB from './model/DBMongo.js'
+
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -15,7 +17,7 @@ const routerProfesional = new RouterProfesional()
 /*             ZONA DE RUTAS MANEJADAS POR EL ROUTER             */
 /* ------------------------------------------------------------- */
 app.use('/api/clinica/paciente', routerPaciente.start())
-app.use('/api/clinica/profesional', routerProfesional.start())
+//app.use('/api/clinica/profesional', routerProfesional.start())
 
 /* ------------------------------------------------------------- */
 /*                      Servidor LISTEN                          */
