@@ -1,6 +1,5 @@
 import config from '../config.js'
 import ModelFactory from '../model/DAO/pacientesFactory.js'
-// import Model from '../model/DAO/pacientesModelMongo.js'
 
 class Servicio {
     constructor() {
@@ -26,8 +25,6 @@ class Servicio {
         const cantidad = await this.model.mostrarPaciente()
         return cantidad.length
     }
-
-    // agregarEspecialidad = async () => {    }
 
     agregarPaciente = async paciente => {
         const pacienteAgregado = await this.model.agregarPaciente(paciente)

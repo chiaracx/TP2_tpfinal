@@ -12,8 +12,6 @@ import RouterProfesional from './router/profesionalRouter.js'
 
 import CnxMongoDB from './model/DBMongo.js'
 
-
-
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
