@@ -13,7 +13,7 @@ class Servicio {
     }
 
     calcularPromedioEdad = async () => {
-        const pacientes = await this.model.mostrarPaciente()
+        const pacientes = await this.model.mostrarPaciente()       
         let promedio = 0
         if (pacientes.length != 0) {
             const suma = pacientes.map(paciente => paciente.edad).reduce((acc, edad) => acc + edad, 0)

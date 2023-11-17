@@ -8,18 +8,5 @@
 		"nombre": "Daniel",
 		"edad": 43,
 		"id": "2"
-	},
-	{
-		"nombre": "Dr. Simpson",
-		"especialidad": "Cardiologo",
-		"id": "profesionales"
-	},
-	{
-		"nombre": "Dr. Simpson",
-		"id": "agregarProfesional"
-	},
-	{
-		"precio": "900",
-		"id": "pacientes"
 	}
 ]
