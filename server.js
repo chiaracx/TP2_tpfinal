@@ -17,7 +17,7 @@ const routerProfesional = new RouterProfesional()
 /*             ZONA DE RUTAS MANEJADAS POR EL ROUTER             */
 /* ------------------------------------------------------------- */
 app.use('/api/clinica/paciente', routerPaciente.start())
-//app.use('/api/clinica/profesional', routerProfesional.start())
+app.use('/api/clinica/profesional', routerProfesional.start())
 
 /* ------------------------------------------------------------- */
 /*                      Servidor LISTEN                          */
