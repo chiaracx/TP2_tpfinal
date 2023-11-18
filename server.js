@@ -1,10 +1,3 @@
-// import express from 'express'
-// import Router from './router/router.js'
-// import config from './config.js'
-
-// import RouterProfesional from './router/profesionalRouter.js'
-// import RouterPaciente from './router/pacienteRouter.js'
-
 import express from 'express'
 import RouterPaciente from './router/pacienteRouter.js'
 import config from './config.js'
@@ -18,7 +11,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
-// const router = new Router()
 const routerPaciente = new RouterPaciente()
 const routerProfesional = new RouterProfesional()
 const routerUser = new RouterUser()
@@ -26,7 +18,6 @@ const routerUser = new RouterUser()
 /* ------------------------------------------------------------- */
 /*             ZONA DE RUTAS MANEJADAS POR EL ROUTER             */
 /* ------------------------------------------------------------- */
-// app.use('/api/clinica/', router.start())
 
 app.use('/api/clinica/paciente', routerPaciente.start())
 app.use('/api/clinica/profesional', routerProfesional.start())

@@ -8,11 +8,11 @@ class RouterUser {
     }
 
     start() {
-        this.router.get('/user/:username', this.controladorUser)
+        this.router.get('/:username?', this.controladorUser.mostrarUser)
         this.router.get('/cantidadUsers', this.controladorUser.cantidadUsuarios)
-        this.router.post('/', this.controladorUser)
-        this.router.put('/:username', this.controladorPac.actualizarPaciente)
-        this.router.delete('/:username', this.controladorPac.eliminarPaciente)
+        this.router.post('/', this.controladorUser.agregarUsuario)
+        this.router.put('/:username', this.controladorUser.actualizarUsuario)
+        this.router.delete('/:username', this.controladorUser.eliminarUsuario)
 
         return this.router
     }
