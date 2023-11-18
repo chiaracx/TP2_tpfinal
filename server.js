@@ -29,7 +29,6 @@ const routerProfesional = new RouterProfesional()
 app.use('/api/clinica/paciente', routerPaciente.start())
 app.use('/api/clinica/profesional', routerProfesional.start())
 
-
 /* ------------------------------------------------------------- */
 /*                      Servidor LISTEN                          */
 /* ------------------------------------------------------------- */

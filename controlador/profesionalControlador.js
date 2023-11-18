@@ -1,6 +1,5 @@
 import ServicioProfesional from "../servicio/profesionalServicio.js"
 
-
 class ControladorProfesional {
     constructor() {
         this.servicioProf = new ServicioProfesional()
@@ -24,9 +23,13 @@ class ControladorProfesional {
     }
 
     agregarProfesional = async (req, res) => {
-        const profesional = req.body
-        const profesionalGuardado = await this.servicioProf.agregarProfesional(profesional)
-        res.json(profesionalGuardado)
+        try {
+            const profesional = req.body
+            const profesionalGuardado = await this.servicioProf.agregarProfesional(profesional)
+            res.json(profesionalGuardado)
+        } catch (error) {
+            res.status(500).json({ error: error.message })
+        }
     }
 
     actualizarProfesional = async (req, res) => {

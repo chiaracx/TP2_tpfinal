@@ -1,5 +1,6 @@
 import config from '../config.js'
 import ModelFactory from '../model/DAO/pacientesFactory.js'
+import { validar } from './validaciones/pacientesValidaciones.js'
 
 class Servicio {
     constructor() {
@@ -12,7 +13,7 @@ class Servicio {
     }
 
     calcularPromedioEdad = async () => {
-        const pacientes = await this.model.mostrarPaciente()       
+        const pacientes = await this.model.mostrarPaciente()
         let promedio = 0
         if (pacientes.length != 0) {
             const suma = pacientes.map(paciente => paciente.edad).reduce((acc, edad) => acc + edad, 0)
@@ -27,8 +28,15 @@ class Servicio {
     }
 
     agregarPaciente = async paciente => {
-        const pacienteAgregado = await this.model.agregarPaciente(paciente)
-        return pacienteAgregado
+        const res = validar(paciente)
+        if (res.result) {
+            const pacienteAgregado = await this.model.agregarPaciente(paciente)
+            return pacienteAgregado
+        }
+        else {
+            console.log(res.error)
+            throw res.error
+        }
     }
 
     actualizarPaciente = async (id, paciente) => {

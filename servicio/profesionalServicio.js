@@ -1,5 +1,6 @@
 import config from "../config.js"
 import ModelFactoryProfesional from "../model/DAO/profesionalesFactory.js"
+import { validar } from "./validaciones/profesionalValidaciones.js"
 
 class ServicioProfesional {
     constructor() {
@@ -23,8 +24,14 @@ class ServicioProfesional {
     }
 
     agregarProfesional = async profesional => {
-        const profesionalAgregado = await this.model.agregarProfesional(profesional)
-        return profesionalAgregado
+        const res = validar(profesional)
+        if (res.result) {
+            const profesionalAgregado = await this.model.agregarProfesional(profesional)
+            return profesionalAgregado
+        } else {
+            console.log(res.error)
+            throw res.error
+        }
     }
 
     actualizarProfesional = async (id, profesional) => {

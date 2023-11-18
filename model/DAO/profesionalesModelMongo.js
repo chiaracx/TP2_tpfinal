@@ -12,7 +12,7 @@ class ModelProfesionalMongoDB {
         else {
             const profesionales = await CnxMongoDB.db.collection('profesionales').find({}).toArray()
             return profesionales
-        }        
+        }
     }
 
     agregarProfesional = async profesional => {

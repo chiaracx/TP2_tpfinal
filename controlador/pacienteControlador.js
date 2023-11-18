@@ -14,19 +14,23 @@ class ControladorPaciente {
     calcularPromedioEdad = async (req, res) => {
 
         const promedioEdad = await this.servicio.calcularPromedioEdad()
-        res.json({ promedioEdad }) 
+        res.json({ promedioEdad })
 
     }
+    
     devolverCantidad = async (req, res) => {
         const cantidad = await this.servicio.devolverCantidad()
         res.json({ cantidad })
     }
 
     agregarPaciente = async (req, res) => {
-
-        const paciente = req.body
-        const pacienteGuardado = await this.servicio.agregarPaciente(paciente)
-        res.json(pacienteGuardado)
+        try {
+            const paciente = req.body
+            const pacienteGuardado = await this.servicio.agregarPaciente(paciente)
+            res.json(pacienteGuardado)
+        } catch (error) {
+            res.status(500).json({ error: error.message })
+        }
     }
 
     actualizarPaciente = async (req, res) => {
@@ -35,11 +39,11 @@ class ControladorPaciente {
         const pacienteGuardado = await this.servicio.actualizarPaciente(id, paciente)
         res.json(pacienteGuardado)
     }
-    
+
     eliminarPaciente = async (req, res) => {
         const { id } = req.params
         const pacienteEliminado = await this.servicio.eliminarPaciente(id)
-        res.json(pacienteEliminado)     
+        res.json(pacienteEliminado)
     }
 }
 
