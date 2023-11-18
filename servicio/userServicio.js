@@ -12,7 +12,7 @@ class ServicioUser {
         return usuario
     }
 
-    cantidadUsuarios = async () => {
+    cantidadUser = async () => {
         const cantidad = await this.model.mostrarUser()
         return cantidad.length
     }

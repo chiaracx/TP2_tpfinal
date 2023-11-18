@@ -11,8 +11,8 @@ class ControladorUser {
         res.json(usuario)
     }
 
-    cantidadUsuarios = async (req, res) => {
-        const cantidad = await this.servicioUser.cantidadUsuarios()
+    cantidadUser = async (req, res) => {
+        const cantidad = await this.servicioUser.cantidadUser()
         res.json({ cantidad })
     }
 

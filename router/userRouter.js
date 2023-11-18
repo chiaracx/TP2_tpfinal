@@ -8,8 +8,8 @@ class RouterUser {
     }
 
     start() {
-        this.router.get('/:username?', this.controladorUser.mostrarUser)
-        this.router.get('/cantidadUsers', this.controladorUser.cantidadUsuarios)
+        this.router.get('/user/:username?', this.controladorUser.mostrarUser)
+        this.router.get('/cantidadUsers', this.controladorUser.cantidadUser)
         this.router.post('/', this.controladorUser.agregarUsuario)
         this.router.put('/:username', this.controladorUser.actualizarUsuario)
         this.router.delete('/:username', this.controladorUser.eliminarUsuario)
