@@ -19,6 +19,7 @@ class ModelPacienteFile {
     }
 
     mostrarPaciente = async id => {
+        console.log(id)
         try {
             const pacientes = await this.leerArchivo(this.nombreArchivo)
             if (id) {
@@ -65,9 +66,9 @@ class ModelPacienteFile {
     }
 
     eliminarPaciente = async id => {
-        let paciente = {}    
-        const pacientes = await this.leerArchivo(this.nombreArchivo)   
-        const index = pacientes.findIndex(paciente => paciente.id === id)   
+        let paciente = {}
+        const pacientes = await this.leerArchivo(this.nombreArchivo)
+        const index = pacientes.findIndex(paciente => paciente.id === id)
         if (index != -1) {
             paciente = pacientes.splice(index, 1)[0]
             await this.escribirArchivo(this.nombreArchivo, pacientes)
