@@ -7,7 +7,7 @@ class ControladorEmail {
 
     mandarMail = async (req, res) => {
         const mailContext = req.body
-        const pacientes = await this.servicio.mandarMail(mailContext)
+        const pacientes = await this.servicio.mandarEmail(mailContext)
         res.json(pacientes)
     }
 }

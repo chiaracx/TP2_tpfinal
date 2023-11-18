@@ -3,11 +3,13 @@ import nodemailer from 'nodemailer'
 class ServicioEmail {
     constructor() {
         this.transport = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com',
+            secure: 'true',
             auth: {
                 user: 'ortspital@gmail.com',
-                pass: 'ORTspital123'
-            }
+                pass: 'gtlrdmsmvjagnjir'
+            },
+            tls: { rejectUnauthorized: false }
         })
     }
 

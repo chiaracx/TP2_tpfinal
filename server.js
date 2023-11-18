@@ -9,6 +9,7 @@ import express from 'express'
 import RouterPaciente from './router/pacienteRouter.js'
 import config from './config.js'
 import RouterProfesional from './router/profesionalRouter.js'
+import RouterEmail from './router/emailRouter.js'
 
 import CnxMongoDB from './model/DBMongo.js'
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 // const router = new Router()
+const routerEmail = new RouterEmail()
 const routerPaciente = new RouterPaciente()
 const routerProfesional = new RouterProfesional()
 
@@ -28,6 +30,7 @@ const routerProfesional = new RouterProfesional()
 
 app.use('/api/clinica/pacientes', routerPaciente.start())
 app.use('/api/clinica/profesionales', routerProfesional.start())
+app.use('/api/clinica/email', routerEmail.start())
 
 /* ------------------------------------------------------------- */
 /*                      Servidor LISTEN                          */
