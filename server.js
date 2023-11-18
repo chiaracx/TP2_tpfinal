@@ -21,10 +21,6 @@ const routerUser = new RouterUser()
 /*             ZONA DE RUTAS MANEJADAS POR EL ROUTER             */
 /* ------------------------------------------------------------- */
 
-app.use('/api/clinica/paciente', routerPaciente.start())
-app.use('/api/clinica/profesional', routerProfesional.start())
-app.use('/api/clinica/user', routerUser.start())
-
 app.use('/api/clinica/pacientes', routerPaciente.start())
 app.use('/api/clinica/profesionales', routerProfesional.start())
 app.use('/api/clinica/user', routerUser.start())
