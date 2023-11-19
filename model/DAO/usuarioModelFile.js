@@ -19,7 +19,6 @@ class ModelUsuarioFile {
     }
 
     mostrarUser = async id => {
-        console.log(id)
         try {
             const usuarios = await this.leerArchivo(this.nombreArchivo)
             if (id) {
@@ -37,13 +36,19 @@ class ModelUsuarioFile {
 
     agregarUsuario = async usuario => {
         const usuarios = await this.leerArchivo(this.nombreArchivo)
-
-        usuario.id = String(parseInt(usuarios[usuarios.length - 1]?.id || 0) + 1)
-        usuario.edad = Number(usuario.edad)
-        usuarios.push(usuario)
-        await this.escribirArchivo(this.nombreArchivo, usuarios)
-
-        return usuario
+        const us = usuarios.find(user => user.email === usuario.email)
+        if (us && us.email == usuario.email) {
+            console.log('Usuario ya registrado')
+            return { error: 'Usuario ya registrado' }
+        }
+        else {
+            console.log('rr')
+            usuario.id = String(parseInt(usuarios[usuarios.length - 1]?.id || 0) + 1)
+            usuario.edad = Number(usuario.edad)
+            usuarios.push(usuario)
+            await this.escribirArchivo(this.nombreArchivo, usuarios)
+            return usuario
+        }
     }
 
     actualizarUsuario = async (id, usuario) => {
@@ -75,7 +80,6 @@ class ModelUsuarioFile {
         }
         return usuario
     }
-
 }
 
 export default ModelUsuarioFile

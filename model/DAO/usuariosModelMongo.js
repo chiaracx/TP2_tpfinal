@@ -18,8 +18,16 @@ class ModelUsuarioMongoDB {
     agregarUsuario = async usuario => {
         if (!CnxMongoDB.connection) return {}
 
-        await CnxMongoDB.db.collection('usuarios').insertOne(usuario)
-        return usuario
+        const usuarioBuscado = await CnxMongoDB.db.collection('usuarios').findOne({ email: usuario.email })
+        if (usuarioBuscado && usuarioBuscado.email == usuario.email) {
+            console.log('Usuario ya registrado')
+            return { error: 'Usuario ya registrado' }
+        }
+        else {
+            await CnxMongoDB.db.collection('usuarios').insertOne(usuario)
+            await CnxMongoDB.db.collection('pacientes').insertOne(usuario)
+            return usuario
+        }
     }
 
     actualizarUsuario = async (username, usuario) => {

@@ -17,7 +17,7 @@ class ServicioUser {
         return cantidad.length
     }
 
-    agregarUsuario = async usuario => {
+    agregarUsuario = async usuario => {       
         const res = validar(usuario)
         if (res.result) {
             const usuarioAgregado = await this.model.agregarUsuario(usuario)

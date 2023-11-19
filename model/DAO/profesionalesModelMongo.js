@@ -18,8 +18,15 @@ class ModelProfesionalMongoDB {
     agregarProfesional = async profesional => {
         if (!CnxMongoDB.connection) return {}
 
-        await CnxMongoDB.db.collection('profesionales').insertOne(profesional)
-        return profesional
+        const profesionalBuscado = await CnxMongoDB.db.collection('profesionales').findOne({ email: profesional.email })
+        if (profesionalBuscado && profesionalBuscado.email == profesional.email) {
+            console.log('Usuario ya registrado')
+            return { error: 'Usuario ya registrado' }
+        }
+        else {
+            await CnxMongoDB.db.collection('profesionales').insertOne(profesional)
+            return profesional
+        }
     }
 
     actualizarProfesional = async (id, profesional) => {

@@ -17,8 +17,6 @@ class ControladorPaciente {
         res.json(pacientes)
     }
 
-
-
     calcularPromedioEdad = async (req, res) => {
 
         const promedioEdad = await this.servicio.calcularPromedioEdad()

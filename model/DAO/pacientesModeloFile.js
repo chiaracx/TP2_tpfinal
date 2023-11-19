@@ -19,7 +19,6 @@ class ModelPacienteFile {
     }
 
     mostrarPaciente = async id => {
-        console.log(id)
         try {
             const pacientes = await this.leerArchivo(this.nombreArchivo)
             if (id) {
@@ -37,13 +36,19 @@ class ModelPacienteFile {
 
     agregarPaciente = async paciente => {
         const pacientes = await this.leerArchivo(this.nombreArchivo)
+        const pacienteBuscado = pacientes.find(user => user.email === paciente.email)
+        if (pacienteBuscado && pacienteBuscado.email === paciente.email) {
+            console.log('Usuario ya registrado')
+            return { error: 'Usuario ya registrado' }
+        }
+        else {
+            paciente.id = String(parseInt(pacientes[pacientes.length - 1]?.id || 0) + 1)
+            paciente.edad = Number(paciente.edad)
+            pacientes.push(paciente)
+            await this.escribirArchivo(this.nombreArchivo, pacientes)
 
-        paciente.id = String(parseInt(pacientes[pacientes.length - 1]?.id || 0) + 1)
-        paciente.edad = Number(paciente.edad)
-        pacientes.push(paciente)
-        await this.escribirArchivo(this.nombreArchivo, pacientes)
-
-        return paciente
+            return paciente
+        }
     }
 
     actualizarPaciente = async (id, paciente) => {

@@ -37,32 +37,20 @@ class ModeloProfesionalFile {
     agregarProfesional = async profesional => {
         const profesionales = await this.leerArchivo(this.nombreArchivo)
 
-        profesional.id = String(parseInt(profesionales[profesionales.length - 1]?.id || 0) + 1)
-        profesional.especialidad = String(profesional.especialidad)
-        profesionales.push(profesional)
-        await this.escribirArchivo(this.nombreArchivo, profesionales)
+        const profesionalBuscado = profesionales.find(user => user.email === profesional.email)
+        if (profesionalBuscado && profesionalBuscado.email == profesional.email) {
+            console.log('Usuario ya registrado')
+            return { error: 'Usuario ya registrado' }
+        }
+        else {
+            profesional.id = String(parseInt(profesionales[profesionales.length - 1]?.id || 0) + 1)
+            profesional.especialidad = String(profesional.especialidad)
+            profesionales.push(profesional)
+            await this.escribirArchivo(this.nombreArchivo, profesionales)
 
-        return profesional
+            return profesional
+        }
     }
-
-    // mostrarEspecialidad= async id => {
-    //     try {
-    //         const profesionales = await this.leerArchivo(this.nombreArchivo)
-    //         if (id) {
-    //             const profesional = profesionales.find(profesional => profesional.id === id)
-    //             return profesional || {}
-    //         }
-    //         else {
-    //             return profesionales
-    //         }
-    //     }
-    //     catch {
-    //         return id ? {} : []
-    //     }
-    // }
-
-
-
 
     actualizarProfesional = async (id, profesional) => {
         profesional.id = id
