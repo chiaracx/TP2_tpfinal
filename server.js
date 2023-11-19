@@ -1,10 +1,10 @@
 import express from 'express'
-import RouterPaciente from './router/pacienteRouter.js'
 import config from './config.js'
+import CnxMongoDB from './model/DBMongo.js'
+import RouterPaciente from './router/pacienteRouter.js'
 import RouterProfesional from './router/profesionalRouter.js'
 import RouterUser from './router/userRouter.js'
 import RouterEmail from './router/emailRouter.js'
-import CnxMongoDB from './model/DBMongo.js'
 
 const app = express()
 app.use(express.json())
