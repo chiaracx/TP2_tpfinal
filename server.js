@@ -11,7 +11,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
-// const router = new Router()
 const routerEmail = new RouterEmail()
 const routerPaciente = new RouterPaciente()
 const routerProfesional = new RouterProfesional()
