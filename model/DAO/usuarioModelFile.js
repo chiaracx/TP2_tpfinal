@@ -19,6 +19,7 @@ class ModelUsuarioFile {
     }
 
     mostrarUser = async id => {
+        console.log(id)
         try {
             const usuarios = await this.leerArchivo(this.nombreArchivo)
             if (id) {
@@ -31,6 +32,17 @@ class ModelUsuarioFile {
         }
         catch {
             return id ? {} : []
+        }
+    }
+
+    loginUser = async login => {    
+        const usuarios = await this.leerArchivo(this.nombreArchivo)
+        const us = usuarios.find(user => user.email === login.email & user.password === login.password)        
+        if (us) {           
+            return { Mensaje: 'Acceso permitido' }
+        }
+        else {
+            return { error: 'Usuario no registrado' }
         }
     }
 

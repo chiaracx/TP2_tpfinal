@@ -16,6 +16,12 @@ class ControladorUser {
         res.json({ cantidad })
     }
 
+    loginUser = async (req, res) => {
+        const user = req.body
+        const usuario = await this.servicioUser.loginUser(user)
+        res.json(usuario)
+    }
+
     agregarUsuario = async (req, res) => {
         try {
             const usuario = req.body

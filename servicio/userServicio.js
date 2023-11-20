@@ -17,7 +17,12 @@ class ServicioUser {
         return cantidad.length
     }
 
-    agregarUsuario = async usuario => {       
+    loginUser  = async email => {
+        const usuario = await this.model.loginUser(email)
+        return usuario
+    }
+
+    agregarUsuario = async usuario => {
         const res = validar(usuario)
         if (res.result) {
             const usuarioAgregado = await this.model.agregarUsuario(usuario)

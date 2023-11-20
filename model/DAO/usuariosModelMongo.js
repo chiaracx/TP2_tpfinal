@@ -15,6 +15,18 @@ class ModelUsuarioMongoDB {
         }
     }
 
+    loginUser = async login => {
+        if (!CnxMongoDB.connection) return username ? {} : []
+
+        const usuario = await CnxMongoDB.db.collection('usuarios').findOne({ email: login.email, password: login.password })
+        if (usuario) {
+            return { Mensaje: 'Acceso permitido' }
+        }
+        else {
+            return { error: 'Usuario no registrado' }
+        }
+    }
+
     agregarUsuario = async usuario => {
         if (!CnxMongoDB.connection) return {}
 
@@ -25,7 +37,7 @@ class ModelUsuarioMongoDB {
         }
         else {
             await CnxMongoDB.db.collection('usuarios').insertOne(usuario)
-            await CnxMongoDB.db.collection('pacientes').insertOne(usuario)
+            await CnxMongoDB.db.collection('pacientes').insertOne({ nombre: usuario.nombre, edad: usuario.edad, email: usuario.email })
             return usuario
         }
     }
