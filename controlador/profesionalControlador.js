@@ -1,8 +1,8 @@
 import ServicioProfesional from "../servicio/profesionalServicio.js"
 
 class ControladorProfesional {
-    constructor() {
-        this.servicioProf = new ServicioProfesional()
+    constructor(persistencia) {
+        this.servicioProf = new ServicioProfesional(persistencia)
     }
 
     mostrarProfesional = async (req, res) => {

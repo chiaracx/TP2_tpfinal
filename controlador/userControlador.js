@@ -1,8 +1,8 @@
 import ServicioUser from "../servicio/userServicio.js"
 
 class ControladorUser {
-    constructor() {
-        this.servicioUser = new ServicioUser()
+    constructor(persistencia) {
+        this.servicioUser = new ServicioUser(persistencia)
     }
 
     mostrarUser = async (req, res) => {

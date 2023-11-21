@@ -1,8 +1,8 @@
 import ServicioEmail from '../servicio/emailServicio.js'
 
 class ControladorEmail {
-    constructor() {
-        this.servicio = new ServicioEmail()
+    constructor(persistencia) {
+        this.servicio = new ServicioEmail(persistencia)
     }
 
     mandarMail = async (req, res) => {

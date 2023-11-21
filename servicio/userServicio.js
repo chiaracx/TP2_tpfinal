@@ -3,8 +3,8 @@ import ModelFactoryUsuario from "../model/DAO/usuariosFactory.js"
 import { validar } from "./validaciones/usuariosValidaciones.js"
 
 class ServicioUser {
-    constructor() {
-        this.model = ModelFactoryUsuario.get(config.MODO_PERSISTENCIA)
+    constructor(persistencia) {
+        this.model = ModelFactoryUsuario.get(persistencia)
     }
 
     mostrarUser = async username => {

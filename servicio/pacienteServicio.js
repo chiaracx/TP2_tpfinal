@@ -3,8 +3,8 @@ import ModelFactory from '../model/DAO/pacientesFactory.js'
 import { validar } from './validaciones/pacientesValidaciones.js'
 
 class Servicio {
-    constructor() {
-        this.model = ModelFactory.get(config.MODO_PERSISTENCIA)
+    constructor(persistencia) {
+        this.model = ModelFactory.get(persistencia)
     }
 
     mostrarPaciente = async id => {

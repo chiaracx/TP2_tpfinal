@@ -1,8 +1,8 @@
 import Servicio from '../servicio/pacienteServicio.js'
 
 class ControladorPaciente {
-    constructor() {
-        this.servicio = new Servicio()
+    constructor(persistencia) {
+        this.servicio = new Servicio(persistencia)
     }
 
     mostrarPaciente = async (req, res) => {

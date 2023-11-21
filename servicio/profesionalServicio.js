@@ -3,8 +3,8 @@ import ModelFactoryProfesional from "../model/DAO/profesionalesFactory.js"
 import { validar } from "./validaciones/profesionalValidaciones.js"
 
 class ServicioProfesional {
-    constructor() {
-        this.model = ModelFactoryProfesional.get(config.MODO_PERSISTENCIA)
+    constructor(persistencia) {
+        this.model = ModelFactoryProfesional.get(persistencia)
     }
 
     mostrarProfesional = async id => {

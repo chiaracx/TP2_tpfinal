@@ -2,9 +2,9 @@ import express from 'express'
 import ControladorPaciente from '../controlador/pacienteControlador.js'
 
 class RouterPaciente {
-    constructor() {
+    constructor(persistencia) {
         this.router = express.Router()
-        this.controladorPac = new ControladorPaciente()      
+        this.controladorPac = new ControladorPaciente(persistencia)      
     }
 
     start() {

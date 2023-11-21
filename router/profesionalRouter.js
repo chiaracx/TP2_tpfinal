@@ -2,9 +2,9 @@ import express from 'express'
 import ControladorProfesional from '../controlador/profesionalControlador.js'
 
 class RouterProfesional {
-    constructor() {
+    constructor(persistencia) {
         this.router = express.Router()
-        this.controladorProf = new ControladorProfesional()
+        this.controladorProf = new ControladorProfesional(persistencia)
     }
 
     start() {

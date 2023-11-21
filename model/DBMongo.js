@@ -16,13 +16,15 @@ class CnxMongoDB {
             CnxMongoDB.db = CnxMongoDB.client.db(config.BASE)
             CnxMongoDB.connection = true
         }
-        catch(error) {
+        catch (error) {
             console.log(`Error en la conexión de base de datos: ${error.message}`)
         }
     }
 
-    static desconectar = _ => {
-        
+    static desconectar = async _ => {
+        if (!CnxMongoDB.connection) return
+        await CnxMongoDB.client.close()
+        CnxMongoDB.connection = false
     }
 }
 
