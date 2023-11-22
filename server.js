@@ -1,5 +1,4 @@
 import express from 'express'
-import config from './config.js'
 import CnxMongoDB from './model/DBMongo.js'
 import RouterPaciente from './router/pacienteRouter.js'
 import RouterProfesional from './router/profesionalRouter.js'
@@ -10,6 +9,7 @@ class Server {
     constructor(port, persistencia) {
         this.port = port
         this.persistencia = persistencia
+        
         this.app = express()
         this.server = null
     }
