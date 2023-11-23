@@ -1,6 +1,7 @@
 import config from "../config.js"
 import ModelFactoryUsuario from "../model/DAO/usuariosFactory.js"
 import { validar } from "./validaciones/usuariosValidaciones.js"
+import EmailService from './emailServicio.js'
 
 class ServicioUser {
     constructor(persistencia) {
@@ -26,6 +27,9 @@ class ServicioUser {
         const res = validar(usuario)
         if (res.result) {
             const usuarioAgregado = await this.model.agregarUsuario(usuario)
+            const mailContext = {from: 'ortspital@gmail.com', to: usuario.email, subject: 'Su usuario fue registrado', text: 'Usted registró un usuario con este mail en la plataforma virtual ORTspital'}
+            const mailService = new EmailService()
+            mailService.mandarEmail(mailContext)
             return usuarioAgregado
         } else {
             console.log(res.error)
