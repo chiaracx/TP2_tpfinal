@@ -6,8 +6,8 @@ class ControladorUser {
     }
 
     mostrarUser = async (req, res) => {
-        const { username } = req.params
-        const usuario = await this.servicioUser.mostrarUser(username)
+        const { id } = req.params
+        const usuario = await this.servicioUser.mostrarUser(id)
         res.json(usuario)
     }
 

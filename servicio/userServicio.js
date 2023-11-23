@@ -8,8 +8,8 @@ class ServicioUser {
         this.model = ModelFactoryUsuario.get(persistencia)
     }
 
-    mostrarUser = async username => {
-        const usuario = await this.model.mostrarUser(username)
+    mostrarUser = async id => {
+        const usuario = await this.model.mostrarUser(id)
         return usuario
     }
 

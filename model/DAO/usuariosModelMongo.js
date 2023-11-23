@@ -2,11 +2,11 @@ import { ObjectId } from "mongodb"
 import CnxMongoDB from "../DBMongo.js"
 
 class ModelUsuarioMongoDB {
-    mostrarUser = async username => {
+    mostrarUser = async id => {
         if (!CnxMongoDB.connection) return username ? {} : []
 
-        if (username) {
-            const usuario = await CnxMongoDB.db.collection('usuarios').findOne({ _username: new ObjectId(username) })
+        if (id) {
+            const usuario = await CnxMongoDB.db.collection('usuarios').findOne({ _id: new ObjectId(id) })
             return usuario
         }
         else {
