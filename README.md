@@ -4,3 +4,17 @@
 https://editor.swagger.io/
 
 [clinica-docs.json](https://github.com/chiaracx/TP2_tpfinal/files/13453297/clinica-docs.json)
+
+
+
+
+
+[Uploading clinica2-docs.yaml…]()
+
+
+
+
+
+
+
+
