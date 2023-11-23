@@ -3,7 +3,7 @@ import supertest from "supertest"
 import generador from "./generador/pacienteGenerador.js"
 
 
-const request = supertest('http://127.0.0.1:8080/')
+const request = supertest('http://127.0.0.1:8080')
 
 describe('test apirestful', () => {
     
@@ -24,13 +24,11 @@ describe('test apirestful', () => {
 
             const pacGuardado = response.body
             console.log(pacGuardado)
-            /*
             expect(pacGuardado).to.include.keys('nombre', 'edad', 'email')
 
             expect(pacGuardado.nombre).to.eql(paciente.nombre)
             expect(pacGuardado.edad).to.eql(paciente.edad)
-            expect(pacGuardado.emai).to.eql(paciente.email)
-            */
+            expect(pacGuardado.email).to.eql(paciente.email)
         })
     })
 
