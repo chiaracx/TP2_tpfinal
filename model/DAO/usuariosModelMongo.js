@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb"
 import CnxMongoDB from "../DBMongo.js"
+import jsonwebtoken from 'jsonwebtoken'
 
 class ModelUsuarioMongoDB {
     mostrarUser = async id => {
@@ -20,7 +21,8 @@ class ModelUsuarioMongoDB {
 
         const usuario = await CnxMongoDB.db.collection('usuarios').findOne({ email: login.email, password: login.password })
         if (usuario) {
-            return { Mensaje: 'Acceso permitido' }
+            const token = jsonwebtoken.sign({email:usuario.email,rol:'paciente'},'clave_secreta')
+            return { Mensaje: 'Acceso permitido', token:token }
         }
         else {
             return { error: 'Usuario no registrado' }
